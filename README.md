@@ -1,5 +1,5 @@
 # PyDCT
-> A non-optimal manual implementation of the Discrete Cosine Transform in Python.
+> An implementation of the Discrete Cosine Transform Type-II in Python.
 
 Project 2 (part 1) for the *Methods of Scientific Computation* course for the MSc in Computer Science at University of Milano-Bicocca.
 

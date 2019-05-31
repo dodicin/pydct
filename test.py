@@ -1,16 +1,19 @@
-import math
+import pydct as p
 import numpy as np
-from scipy.fftpack import dctn, idctn
+from scipy.fftpack import dctn
 
 def test():
+
+        # numpy printing settings
+        np.set_printoptions(precision=2)
 
         #
         ## Testing library for accuracy against assigned test data
         #
 
         test_dct1 = {
-        "in" : np.matrix("231 32 233 161 24 71 140 245"),
-        "out" : np.matrix("4.01e+02 6.60e+00 1.09e+02 -1.12e+02 6.54e+01 1.21e+02 1.16e+02 2.88e+01")
+        "in" : np.array([231, 32, 233, 161, 24, 71, 140, 245]),
+        "out" : np.array([4.01e+02, 6.60e+00, 1.09e+02, -1.12e+02, 6.54e+01, 1.21e+02, 1.16e+02, 2.88e+01])
         }
 
         test_dct2 = {
@@ -38,8 +41,8 @@ def test():
         )
         }
 
-        dct1 = dctn(test_dct1["in"], type = 2, norm='ortho')
-        dct2 = dctn(test_dct2["in"], type = 2, norm='ortho')
+        dct1 = dctn(test_dct1["in"], type = 2, norm = 'ortho')
+        dct2 = dctn(test_dct2["in"], type = 2, norm = 'ortho')
 
         # Check if the transform is identical to the given one
         np.testing.assert_allclose(dct1, test_dct1["out"], rtol=1e-02)
@@ -49,27 +52,15 @@ def test():
         ## Testing DCT1
         #
 
-        dct1 = dct(test_dct1["in"])
+        dct1 = p.dct1(test_dct1["in"])
         np.testing.assert_allclose(dct1, test_dct1["out"], rtol=1e-02)
 
-# DCT type II
-def dct(f):
-        c = []
-        x, y = f.shape
-        N = y
-        alpha = np.pad([1/np.sqrt(N)], (0, y-1), 'constant', constant_values = (np.sqrt(2/N)))
+        #
+        ## Testing DCT2
+        #
 
-        for k in range(N):
-                sum = 0.0
-                for index, val in np.ndenumerate(f):
-                        i = index[1]
-                        sum += val*np.cos(np.pi*k*(2*i+1)/(2*N))
-                sum = alpha[k] * sum
-                c.append(sum)
-
-        c = np.array(c)
-        c = c.reshape(x, y)
-        return c
+        dct2 = p.dct2(test_dct2["in"])
+        np.testing.assert_allclose(dct2, test_dct2["out"], rtol=1e-02)
 
 # Running tests
 test()

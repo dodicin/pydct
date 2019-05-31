@@ -24,9 +24,11 @@ def write_data():
 results = []
 for i in range(1, 13):
     mat = np.random.rand(2**i, 2**i)
-    
+    print("## " + str(i) + "/12")
+
     for j in range(10):
 
+        print("#### " + str(j) + "/10")
         t0 = time.process_time()
         _ = dctn(mat, type = 2, norm = 'ortho')
         t = time.process_time() - t0

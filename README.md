@@ -24,7 +24,7 @@ The file `pydct.py` contains an implementation of the Discrete Cosine Transform 
 
 The file `test.py` contains the standard tests which have been given in the project.
 
-The file `compare.py` outputs the time taken for both `scipy` and `pydct`'s DCT implementations to apply to randomly generated matrices of increasing size. The data is outputted in `data/data.csv`.
+The file `compare.py` outputs the time taken for both `scipy` and `pydct`'s DCT implementations applied to randomly generated matrices of increasing size. The data is outputted in `data/data.csv`.
 
 #
 ## Authors

@@ -22,8 +22,8 @@ def write_data():
 
 
 results = []
-for i in range(1, 11):
-    mat = np.random.rand(2**i, 2**i)
+for i in range(2, 100):
+    mat = np.random.rand(i, i)
     print("## " + str(i) + "/10")
 
     for j in range(10):

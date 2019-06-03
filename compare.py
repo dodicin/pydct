@@ -24,7 +24,7 @@ def write_data():
 results = []
 for i in range(2, 100):
     mat = np.random.rand(i, i)
-    print("## " + str(i) + "/10")
+    print("## " + str(i) + "/100")
 
     for j in range(10):
 
@@ -33,12 +33,12 @@ for i in range(2, 100):
         _ = dctn(mat, type = 2, norm = 'ortho')
         t = time.process_time() - t0
         
-        results.append(["{}x{}".format(2**i, 2**i), "scipy", str(t)])
+        results.append(["{}x{}".format(i, i), "scipy", str(t)])
 
         t0 = time.process_time()
         _ = p.dct2(mat)
         t = time.process_time() - t0
         
-        results.append(["{}x{}".format(2**i, 2**i), "pydct", str(t)])
+        results.append(["{}x{}".format(i, i), "pydct", str(t)])
 
 write_data()
